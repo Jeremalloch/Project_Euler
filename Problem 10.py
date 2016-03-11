@@ -45,4 +45,9 @@ def  findPrimes (target):
 
     return firstPrimes
     
+PrimesUnder2K = findPrimes(2*10**6) #Create a list of all primes less than or equal to 2 million
+sumOfPrimes = 0 #sum of all the primes from the list generated in the step before
 
+for prime in PrimesUnder2K:
+    sumOfPrimes+=prime #Adding up the primes from the list into an integer
+print(sumOfPrimes)
