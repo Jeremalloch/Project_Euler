@@ -12,31 +12,37 @@ def  findPrimes (target):
     
     #Growing the level exponentially, the level is squared after each loop through here
     #It is cut off at sqrt(target) so as not to compute unnecessary primes above the target
-    while level < sqrt(target):
+    while level < math.sqrt(target):
         for num in xrange(level, level**2): #excludes primes**2, which will be even and not prime
             if num%2 != 0: # if the number is even, it will not be prime
+                Prime = True
                 for prime in firstPrimes:
                     if num%prime == 0: #if the number is divisible by any of the prexisting primes, it is not a prime
-                        break
-                secondPrimes.append(num) #if the number is not divisible by any of the existing primes, it is a prime, and is added to the second list of primes
-        firstPrimes = secondPrimes
+                        Prime = False
+                if Prime:
+                    secondPrimes.append(num) #if the number is not divisible by any of the existing primes, it is a prime, and is added to the second list of primes
+        firstPrimes += secondPrimes
+        secondPrimes = []
         level = level**2
     
     #Last loop through the prime sieve, which cuts off when the target is hit
-    for num in xrange(level, target+1):
+    if target > level:  
+        for num in xrange(level+1, target+1):
             if num%2 != 0: # if the number is even, it will not be prime
+                Prime = True
                 for prime in firstPrimes:
                     if num%prime == 0: #if the number is divisible by any of the prexisting primes, it is not a prime
-                        break
-                secondPrimes.append(num) #if the number is not divisible by any of the existing primes, it is a prime, and is added to the second list of primes
-        firstPrimes = secondPrimes
-        level = level**2
+                        Prime = False
+                if Prime:
+                    secondPrimes.append(num) #if the number is not divisible by any of the existing primes, it is a prime, and is added to the second list of primes
+        firstPrimes += secondPrimes
     
     #removing primes above the target if the target is less than 10
     if target < 7:
         for prime in firstPrimes:
             if prime > target:
                 firstPrimes.remove(prime)
-    
-    print 
+
     return firstPrimes
+    
+
