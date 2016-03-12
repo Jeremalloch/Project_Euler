@@ -1,4 +1,6 @@
 import math
+import time
+start_time = time.time()
 
 
 def  findPrimes (target):
@@ -51,3 +53,5 @@ sumOfPrimes = 0 #sum of all the primes from the list generated in the step befor
 for prime in PrimesUnder2K:
     sumOfPrimes+=prime #Adding up the primes from the list into an integer
 print(sumOfPrimes)
+
+print("--- %s seconds ---" % (time.time() - start_time)) #Prints out to time to compute the code
