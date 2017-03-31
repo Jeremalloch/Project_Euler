@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# A commit hook that updates the README file to show which Project Euler problems
+# complete or in progress, and in what languages
+
+# Overwrite all of existing README except header message and the top of the table
+cat ~/Projects/Project_Euler/READMEGenerator/READMETemplate.md > ~/Projects/Project_Euler/README.md
+
+# Get an array of the problems in progress and completed in C, Haskell & Python
+python ~/Projects/Project_Euler/READMEGenerator/pythonScript.py >> ~/Projects/Project_Euler/README.md
+
+# Add the new README.md to the current commit
+cd ~/Projects/Project_Euler/
+git add -A
+
+# Let me know it ran
+echo "Successfully updated README"
