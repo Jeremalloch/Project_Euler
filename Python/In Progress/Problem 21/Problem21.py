@@ -1,38 +1,26 @@
-import math
-from collections import Counter
-import timeit
-
-__author__ = 'Jeremy Malloch'
-
-
-def sum_proper_divisors(number):
+def sumProperDivisors(number):
     """
     Takes an integer number, returns the sum of its proper divisors
     """
     sum = 0
-    for i in range(1,number):
+    for i in range(1, number):
         if number % i == 0:
             sum += i
     return sum
 
-
-def main():
-    # Work in progress lol
-    sum_proper_divisors_list = []
-    for j in range(10001):
-        sum_proper_divisors_list.append(sum_proper_divisors(j))
-    amicable_numbers = []
-    for number in sum_proper_divisors_list:
-        if number <= 10000 and number == sum_proper_divisors_list[number]:
-            amicable_numbers.append(number)
-    return amicable_numbers
-
-
-    # sum_of_amicable_numbers = 0
-    # for key, value in frequency.items():
-    #     if value > 1:
-    #         sum_of_amicable_numbers += int(key)
-    # return sum(amicable_numbers)
+def main(low, high):
+    sumPropDiv = [sumProperDivisors(i) for i in range(low, high + low)]
+    amicableNumbers = []
+    for i in range(high - low + 1):
+        index = sumPropDiv[i]
+        try:
+            if sumPropDiv[index - low] == i + low and (i + low) != index:
+                amicableNumbers.extend([i + low, index])
+        except IndexError:
+            pass
+    amicableNumbersSet = set(amicableNumbers)
+    print("Answer is {}".format(sum(amicableNumbersSet)))
+    return
 
 if __name__ == '__main__':
-    print(main())
+    main(1,10000)
