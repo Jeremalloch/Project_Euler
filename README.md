@@ -24,10 +24,11 @@ Progress by problem in each of the languages can be seen in the table below.
 |Problem 018| Completed |           |           |
 |Problem 019| Completed |           |           |
 |Problem 020| Completed |           |           |
-|Problem 021|In Progress|           |           |
+|Problem 021| Completed |           |           |
 |Problem 022| Completed |           |           |
 |Problem 024| Completed |           |           |
 |Problem 025| Completed |           |           |
+|Problem 026|In Progress|           |           |
 |Problem 048| Completed |           |           |
 |Problem 053|In Progress|           |           |
 |Problem 067| Completed |           |           |
